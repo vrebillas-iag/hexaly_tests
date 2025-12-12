@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/IAG-GBS/metrics-metadata-schema/refs/heads/main/metadata.schema.json",
+  "businessUnit": "{{ cookiecutter.METADATA_BUS_UNIT }}",
+  "product": "{{ cookiecutter.METADATA_PRODUCT }}",
+  "name": "{{ cookiecutter.METADATA_NAME }}",
+  "type": "{{ cookiecutter.METADATA_TYPE }}",
+  "cloudPlatform": "{{ cookiecutter.METADATA_CLOUD_PLATFORM }}",
+  "lifecycleStage": "{{ cookiecutter.METADATA_LIFECYCLE_STAGE }}",
+  "serviceTier": "{{ cookiecutter.METADATA_SERVICE_TIER }}",
+  "jira": "{{ cookiecutter.METADATA_JIRA }}",
+  "wiki": "{{ cookiecutter.METADATA_WIKI }}",
+  "msTeams": "{{ cookiecutter.METADATA_MS_TEAMS }}"
+}

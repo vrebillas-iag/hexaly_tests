@@ -1,0 +1,27 @@
+# This workflow is run on the template repository and gets deleted when the template is used
+name: SonarCloud Scan
+
+# This workflow triggers a sonarcloud scan
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: none
+
+jobs:
+  sonarcloud-scan:
+    name: SonarCloud Scan
+    uses: IAGAI/workflows/.github/workflows/sonarcloud-scan.yml@v8
+
+    permissions:
+      contents: read
+
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

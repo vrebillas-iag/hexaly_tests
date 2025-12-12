@@ -1,0 +1,24 @@
+# This workflow is run on the template repository and gets deleted when the template is used
+name: Cookiecutter Test
+
+# This workflow should be run on any changes to create a PR demonstrating the changes that would have been made on initialisation of a new repo
+# The PR should then be checked to ensure it is as expected
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  run-cookiecutter:
+    name: Initialisation
+    uses: IAGAI/workflows/.github/workflows/repository-initialisation.yml@v8
+    with:
+      cookiecutter-values: '{
+          "REPO_NAME": "${{ github.event.repository.name }}",
+          "ORG_NAME": "${{ github.repository_owner }}"
+        }'
+    secrets:
+      bot-app-private-key: ${{ secrets.IAG_AI_BOT_PRIVATE_KEY }}

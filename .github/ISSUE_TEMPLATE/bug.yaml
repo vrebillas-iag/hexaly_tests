@@ -1,0 +1,39 @@
+# Here is an example template for creating a bug report
+name: Bug Report
+description: Use this template for reporting bugs.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this bug!
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirm you have searched for existing issues relating to this bug
+      options:
+        - label: I confirm I have not found any existing issues related to this bug
+          required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      value: |
+        ### Steps to reproduce
+        1. <!-- What did you do to come across this bug -->
+        
+        ### Expected behaviour
+        * <!-- What did you expect to happen -->
+        
+        ### Actual behaviour
+        * <!-- What did happen -->
+        
+        ### Environment
+        <!-- application version, browser and version, operating system, etc -->
+        
+        ### Any other details
+        <!-- anything else that might be relevant -->
+    validations:
+      required: true

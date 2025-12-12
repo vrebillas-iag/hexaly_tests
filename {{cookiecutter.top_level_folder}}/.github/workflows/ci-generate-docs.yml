@@ -1,0 +1,20 @@
+name: Automatically generate documentation
+
+# This workflow automatically generates documentation as dictated by control comments within the given markdown file
+
+on:
+  pull_request:
+
+permissions:
+  contents: none
+
+jobs:
+  update-docs:
+    name: Update README.md
+    uses: IAGAI/workflows/.github/workflows/generate-docs.yml@v6
+    permissions:
+      contents: write
+      actions: read
+    with:
+      readme-file: README.md
+      files-to-document: '^\.github\/workflows\/.*\.ya?ml$'

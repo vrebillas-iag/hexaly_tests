@@ -1,0 +1,40 @@
+# This workflow is run on repository initalisation and gets deleted when the template is used
+name: Repository Initialisation
+
+on:
+  workflow_run:
+    workflows:
+      - Delay Repository Initialisation
+    types:
+      - completed
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  initialisation:
+    name: Initialisation
+    if: ${{ github.event.repository.name != 'basic-template' }}
+    uses: IAGAI/workflows/.github/workflows/repository-initialisation.yml@v8
+    with:
+      cookiecutter-values: '{
+          "REPO_NAME": "${{ github.event.repository.name }}",
+          "ORG_NAME": "${{ github.repository_owner }}",
+          "TEAM_NAME": "${{ vars.INIT_TEAM_NAME }}",
+          "TEAM_SLUG": "${{ vars.INIT_TEAM_SLUG }}",
+          "METADATA_BUS_UNIT": "${{ vars.INIT_MD_BUS_UNIT }}",
+          "METADATA_PRODUCT": "${{ vars.INIT_MD_PRODUCT }}",
+          "METADATA_NAME": "${{ vars.INIT_MD_NAME }}",
+          "METADATA_TYPE": "${{ vars.INIT_MD_TYPE }}",
+          "METADATA_SERVICE_TIER": "${{ vars.INIT_MD_SERVICE_TIER }}",
+          "METADATA_LIFECYCLE_STAGE": "${{ vars.INIT_MD_LIFECYCLE_STAGE }}",
+          "METADATA_CLOUD_PLATFORM": "${{ vars.INIT_MD_CLOUD_PLATFORM }}",
+          "METADATA_JIRA": "${{ vars.INIT_MD_JIRA }}",
+          "METADATA_WIKI": "${{ vars.INIT_MD_WIKI }}",
+          "METADATA_SLACK": "${{ vars.INIT_MD_SLACK }}",
+          "METADATA_MS_TEAMS": "${{ vars.INIT_MD_MS_TEAMS }}"
+        }'
+    secrets:
+      # to be able to write to the .github/workflows directory
+      bot-app-private-key: ${{ secrets.IAG_AI_BOT_PRIVATE_KEY }}

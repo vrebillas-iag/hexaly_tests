@@ -1,0 +1,24 @@
+name: Schema-validate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+permissions:
+  contents: none
+
+jobs:
+  run:
+    name: Dependabot
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: read
+      pull-requests: read
+      checks: read
+
+    steps:
+      - name: Run Dependabot PR check
+        uses: IAGAI/actions/dependabot-pr-check@v8

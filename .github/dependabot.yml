@@ -1,0 +1,32 @@
+version: 2
+updates:
+
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+      time: '00:00'
+      timezone: 'UTC'
+    commit-message:
+      prefix: '[dependabot] [github-actions] '
+    labels:
+      - 'dependabot'
+    groups:
+      gha-security-major:
+        applies-to: 'security-updates'
+        update-types:
+          - 'major'
+      gha-security-minor-patch:
+        applies-to: 'security-updates'
+        update-types:
+          - 'minor'
+          - 'patch'
+      gha-major:
+        applies-to: 'version-updates'
+        update-types:
+          - 'major'
+      gha-minor-patch:
+        applies-to: 'version-updates'
+        update-types:
+          - 'minor'
+          - 'patch'

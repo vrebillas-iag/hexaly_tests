@@ -1,0 +1,54 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'sunday'
+      timezone: 'Europe/London'
+    commit-message:
+      prefix: '[dependabot] '
+    labels:
+      - 'dependabot'
+      - 'increment-patch'
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'sunday'
+      timezone: 'Europe/London'
+    commit-message:
+      prefix: '[dependabot] '
+    # ignore major version updates
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+    labels:
+      - 'dependabot'
+      - 'increment-patch'
+  - package-ecosystem: 'pip'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'sunday'
+      timezone: 'Europe/London'
+    commit-message:
+      prefix: '[dependabot] '
+    # ignore major version updates
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+    labels:
+      - 'dependabot'
+      - 'increment-patch'
+  - package-ecosystem: 'terraform'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'sunday'
+      timezone: 'Europe/London'
+    commit-message:
+      prefix: '[dependabot] '
+    labels:
+      - 'dependabot'
+      - 'increment-patch'
