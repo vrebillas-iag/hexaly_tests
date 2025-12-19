@@ -149,7 +149,7 @@ for e_id in engines:
 # =========================
 for t in time_periods:
     m.constraint(
-        m.sum(start_sv[e_id, t] for e in engines) <= MAX_SV_PER_MONTH
+        m.sum(start_sv[e_id, t] for e_id in engines) <= MAX_SV_PER_MONTH
     )
 # =========================
 # 6. MINIMUM STAY IN AIRCRAFT AFTER INSTALLATION (C4)
