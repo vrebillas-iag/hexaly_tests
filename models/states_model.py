@@ -106,9 +106,10 @@ for e_id, e_obj in engines.items():
 # 4. 2 ENGINES PER AIRCRAFT PER PERIOD (C2)
 # =========================
 for t in time_periods:
-    m.constraint(
-        m.sum(m.eq(state[e_id, t], aircraft_index[a_id]) for e_id in engines for a_id in aircraft_ids) == 2 * A
-    )
+    for a_id in aircraft_ids:
+        m.constraint(
+            m.sum(m.eq(state[e_id, t], aircraft_index[a_id]) for e_id in engines) == 2
+        )
 
 # =========================
 # 5. LIFE EVOLUTION + MAINTENANCE RESET (C3)
